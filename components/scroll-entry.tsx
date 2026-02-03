@@ -176,11 +176,14 @@ function Letter({
     [1, 0]
   )
   
-  // Blur: Adds speed blur as it gets closer to camera
-  const blur = useTransform(
+  // Reduced motion opacity alternative
+  const reducedOpacity = useTransform(progress, [start, end], [1, 0.2])
+  
+  // Blur: Adds speed blur as it gets closer to camera - returns full CSS filter string
+  const filterBlur = useTransform(
     progress,
     [start, start + step],
-    ["0px", "10px"]
+    ["blur(0px)", "blur(10px)"]
   )
 
   // Glow: Letters glow as they approach focus
@@ -202,8 +205,8 @@ function Letter({
       )}
       style={{
         z: reduceMotion ? 0 : z,
-        opacity: reduceMotion ? useTransform(progress, [start, end], [1, 0.2]) : opacity,
-        filter: reduceMotion ? "none" : useTransform(blur, (b) => `blur(${b})`),
+        opacity: reduceMotion ? reducedOpacity : opacity,
+        filter: reduceMotion ? "none" : filterBlur,
         textShadow: textShadow,
         display: "inline-block",
         backfaceVisibility: "hidden"
