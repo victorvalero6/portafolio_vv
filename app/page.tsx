@@ -78,13 +78,13 @@ export default function Home() {
 
   const playlist = [
     {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/casiopea-3GUpLiMeo45hk5TGob3mSbQGGAuzmQ.mp3",
+      src: "/images/casiopea.mp3",
       title: "Casiopea",
       artist: "Casiopea",
       coverUrl: "/music/casiopea-cover.png",
     },
     {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Cosmic%20Surfin-DKe96czTJBaj9pqb5RtglR73mHxz8S.mp3",
+      src: "/music/cosmic-surfin.mp3",
       title: "Cosmic Surfin",
       artist: "Casiopea",
       coverUrl: "/music/pacific-cover.png",
@@ -94,12 +94,6 @@ export default function Home() {
       title: "Milk",
       artist: "Sweet Trip",
       coverUrl: "/music/milk-cover.png",
-    },
-    {
-      src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/I%20Want%20To%20Talk%20About%20You-9UcBLTBcuLs0hwvlZIY3Bes8zs6HoH.mp3",
-      title: "I Want To Talk About You",
-      artist: "Ryo Fukui",
-      coverUrl: "/music/souvenir-cover.png",
     }
   ]
 

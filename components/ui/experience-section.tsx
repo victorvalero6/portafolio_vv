@@ -5,7 +5,7 @@ import DotPattern from "@/components/ui/dot-pattern"
 import { useEffect, useMemo, useState } from "react"
 import { useTranslation } from "@/lib/translations"
 import Image from "next/image" // Assuming you use Next.js Image
-import { supabase } from "@/lib/supabase"
+import { getSupabaseClient } from "@/lib/supabase"
 import { NowPlayingCard, type NowPlayingTrack } from "@/components/ui/now-playing-card"
 import { PhotoWidget } from "@/components/ui/photo-widget"
 
@@ -143,6 +143,12 @@ export function ExperienceSection({
     let isMounted = true
 
     const loadExperiences = async () => {
+      const supabase = getSupabaseClient()
+      if (!supabase) {
+        setLoadError("Supabase client not initialized")
+        return
+      }
+
       const { data, error } = await supabase
         .from("content_sections")
         .select(
@@ -200,8 +206,7 @@ export function ExperienceSection({
     }
   }, [t])
 
-  // Always use fallback experiences for proper translation support
-  const experiencesToRender = fallbackExperiences
+  const experiencesToRender = experiences?.length ? experiences : fallbackExperiences
 
   return (
     <div className="relative mx-auto w-full max-w-6xl px-4 pb-20 pt-4 md:px-6 lg:px-10">

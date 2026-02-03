@@ -5,7 +5,7 @@ import { ArrowUpRight, Folder, GitFork } from "lucide-react"
 import { useEffect, useState } from "react"
 import { useTranslation } from "@/lib/translations"
 import DotPattern from "@/components/ui/dot-pattern"
-import { supabase } from "@/lib/supabase"
+import { getSupabaseClient } from "@/lib/supabase"
 
 interface Project {
   id?: number
@@ -165,6 +165,12 @@ export function ProjectsGrid() {
     let isMounted = true
 
     const loadProjects = async () => {
+      const supabase = getSupabaseClient()
+      if (!supabase) {
+        setLoadError("Supabase client not initialized")
+        return
+      }
+
       const { data, error } = await supabase
         .from("projects")
         .select(
@@ -225,8 +231,7 @@ export function ProjectsGrid() {
     }
   }, [t])
 
-  // Always use fallback projects for proper translation support
-  const projectsToRender = fallbackProjects
+  const projectsToRender = projects?.length ? projects : fallbackProjects
 
   return (
     <div className="relative w-full">

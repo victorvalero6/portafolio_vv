@@ -1,30 +1,75 @@
-# Landing page hero
+# Victor Valero Portfolio
 
-*Automatically synced with your [v0.app](https://v0.app) deployments*
+A modern Next.js portfolio website showcasing design and development work.
 
-[![Deployed on Vercel](https://img.shields.io/badge/Deployed%20on-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/rajs-projects-a7283d3f/v0-landing-page-hero)
-[![Built with v0](https://img.shields.io/badge/Built%20with-v0.app-black?style=for-the-badge)](https://v0.app/chat/projects/TDZy0S0ZtGl)
+## Tech Stack
 
-## Overview
+- **Framework**: Next.js 15
+- **Styling**: Tailwind CSS
+- **UI Components**: Radix UI
+- **Animations**: Framer Motion, GSAP
+- **Forms**: React Hook Form with Formspree
+- **Database**: Supabase (optional)
+- **Package Manager**: pnpm
 
-This repository will stay in sync with your deployed chats on [v0.app](https://v0.app).
-Any changes you make to your deployed app will be automatically pushed to this repository from [v0.app](https://v0.app).
+## Getting Started
 
-## Deployment
+1. Install dependencies:
 
-Your project is live at:
+```bash
+pnpm install
+```
 
-**[https://vercel.com/rajs-projects-a7283d3f/v0-landing-page-hero](https://vercel.com/rajs-projects-a7283d3f/v0-landing-page-hero)**
+2. Run the development server:
 
-## Build your app
+```bash
+pnpm dev
+```
 
-Continue building your app on:
+3. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-**[https://v0.app/chat/projects/TDZy0S0ZtGl](https://v0.app/chat/projects/TDZy0S0ZtGl)**
+## Build
 
-## How It Works
+To create a production build:
 
-1. Create and modify your project using [v0.app](https://v0.app)
-2. Deploy your chats from the v0 interface
-3. Changes are automatically pushed to this repository
-4. Vercel deploys the latest version from this repository
+```bash
+pnpm build
+pnpm start
+```
+
+## Environment Variables (Optional)
+
+If you want to use Supabase for dynamic content:
+
+```
+NEXT_PUBLIC_SUPABASE_URL=your_supabase_url
+NEXT_PUBLIC_SUPABASE_ANON_KEY=your_supabase_key
+```
+
+The application works without these variables and will fall back to local data.
+
+**See [DATABASE_SETUP.md](./DATABASE_SETUP.md) for detailed database setup instructions.**
+
+## Project Structure
+
+- `/app` - Next.js app router pages
+- `/components` - Reusable React components
+- `/lib` - Utility functions and database helpers
+  - `supabase.ts` - Supabase client setup
+  - `photos.ts` - Photo album functions
+  - `articles.ts` - Article/blog functions
+  - `about.ts` - About section functions
+  - `database-schema.sql` - Complete database schema
+- `/public` - Static assets (images, music, etc.)
+
+## Database-Connected Components
+
+The following components fetch data from Supabase (with fallback to local data):
+
+- **PhotoWidget** - Displays photos from the database
+- **ProjectsGrid** - Shows portfolio projects with technologies
+- **ExperienceSection** - Displays work experience and education
+- **AboutQuote** - Dynamic about text content
+- **ArticlesList** - Blog posts/articles (component ready to use)
+
+All components work without a database connection and will gracefully fall back to hardcoded content.

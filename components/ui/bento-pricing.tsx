@@ -135,7 +135,7 @@ export function BentoPricing() {
         priceLabel="$0"
         features={[
           "$5 of included monthly credits",
-          "Deploy apps to Vercel",
+          "Deploy apps anywhere",
           "Edit visually with Design Mode",
           "Sync with GitHub",
         ]}
@@ -149,7 +149,7 @@ export function BentoPricing() {
         priceSuffix="/user/month"
         features={[
           "$30 of included monthly credits per user",
-          "Centralized billing on vercel.com",
+          "Centralized billing dashboard",
           "Share chats and collaborate with your team",
         ]}
         className="lg:col-span-4"

@@ -1,4 +1,4 @@
-import { supabase } from "./supabase"
+import { getSupabaseClient } from "./supabase"
 
 export interface Photo {
   id: number
@@ -25,6 +25,11 @@ export interface PhotoAlbum {
  */
 export async function getPhotosByAlbumKey(albumKey: string): Promise<Photo[]> {
   try {
+    const supabase = getSupabaseClient()
+    if (!supabase) {
+      return []
+    }
+
     const { data, error } = await supabase
       .from("photos")
       .select(
@@ -64,6 +69,11 @@ export async function getPhotosByAlbumKey(albumKey: string): Promise<Photo[]> {
  */
 export async function getActiveAlbums(): Promise<PhotoAlbum[]> {
   try {
+    const supabase = getSupabaseClient()
+    if (!supabase) {
+      return []
+    }
+
     const { data, error } = await supabase
       .from("photo_albums")
       .select("*")

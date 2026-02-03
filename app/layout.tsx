@@ -1,7 +1,6 @@
 import type React from "react"
 import type { Metadata } from "next"
 
-import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 import { Suspense } from "react"
 import { TranslationProvider } from "@/lib/translations"
@@ -38,7 +37,7 @@ const instrumentSerif = Instrument_Serif({
 export const metadata: Metadata = {
   title: "Victor Valero | Designer & Developer",
   description: "Personal portfolio showcasing design and development work. Creating digital experiences that blend thoughtful design with robust engineering.",
-  generator: "v0.app",
+  generator: "local",
   icons: {
     icon: [
       { url: '/favicon.png' },
@@ -59,7 +58,6 @@ export default function RootLayout({
         <TranslationProvider>
           <Suspense fallback={null}>
             {children}
-            <Analytics />
           </Suspense>
         </TranslationProvider>
       </body>
